@@ -20,7 +20,6 @@ export class AppService {
         } catch (err) {
           return { ok: false };
         }
-        return;
         break;
 
       case 'delete_task':
