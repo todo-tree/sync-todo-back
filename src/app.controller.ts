@@ -7,7 +7,7 @@ export class AppController {
   constructor(private readonly appService: AppService) {}
 
   @Post()
-  getHello(@Body('command') command: commandProps): string {
-    return this.appService.getHello(command);
+  async runCommands(@Body('command') command: commandProps): Promise<any> {
+    return await this.appService.runCommands(command);
   }
 }
