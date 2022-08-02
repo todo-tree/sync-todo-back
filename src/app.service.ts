@@ -1,9 +1,12 @@
 import { Injectable } from '@nestjs/common';
+import { AppGateway } from './app.gateway';
 import { commandProps } from './app.interface';
 import Task from './task.model';
 
 @Injectable()
 export class AppService {
+  constructor(private readonly appGateway: AppGateway) {}
+
   async runCommands(command: commandProps): Promise<any> {
     switch (command.type) {
       case 'get_task':
@@ -51,6 +54,9 @@ export class AppService {
           task.completed = !task.completed;
 
           const updatedTask = await task.save();
+
+          this.appGateway.server.emit('message', 'NEED UPDATE!');
+
           return { ok: true, updated_task: updatedTask };
         } catch (err) {
           return { ok: false };
