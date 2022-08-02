@@ -56,7 +56,7 @@ export class AppService {
 
           const updatedTask = await task.save();
 
-          this.appGateway.server.emit('message', 'NEED UPDATE!');
+          this.appGateway.server.emit('completed_task', updatedTask);
 
           return { ok: true, updated_task: updatedTask };
         } catch (err) {
