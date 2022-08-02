@@ -9,6 +9,7 @@ async function bootstrap() {
   db.once('open', () => console.log('Conecting DB'));
 
   const app = await NestFactory.create(AppModule);
+  app.enableCors();
   await app.listen(3000);
 }
 bootstrap();
