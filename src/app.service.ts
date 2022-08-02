@@ -19,6 +19,7 @@ export class AppService {
         });
         try {
           const createdTask = await newTask.save();
+          this.appGateway.server.emit('create_task', createdTask);
           return { ok: true, task: createdTask };
         } catch (err) {
           return { ok: false };
