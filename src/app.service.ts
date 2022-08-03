@@ -29,6 +29,7 @@ export class AppService {
       case 'delete_task':
         try {
           await Task.findByIdAndRemove(command.data.id);
+          this.appGateway.server.emit('delete_task', command.data.id);
           return { ok: true, id: command.data.id };
         } catch (err) {
           return { ok: false };
