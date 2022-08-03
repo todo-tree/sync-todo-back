@@ -42,6 +42,9 @@ export class AppService {
             task.title = command.data.title;
           }
           const updatedTask = await task.save();
+
+          this.appGateway.server.emit('updated_task', updatedTask);
+
           return { ok: true, updated_task: updatedTask };
         } catch (err) {
           return { ok: false };
@@ -56,7 +59,7 @@ export class AppService {
 
           const updatedTask = await task.save();
 
-          this.appGateway.server.emit('completed_task', updatedTask);
+          this.appGateway.server.emit('updated_task', updatedTask);
 
           return { ok: true, updated_task: updatedTask };
         } catch (err) {
