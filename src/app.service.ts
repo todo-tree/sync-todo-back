@@ -11,7 +11,6 @@ export class AppService {
     switch (command.type) {
       case 'get_task':
         return { ok: true, tasks: await Task.find({}) };
-        break;
 
       case 'create_task':
         const newTask = new Task({
@@ -24,7 +23,6 @@ export class AppService {
         } catch (err) {
           return { ok: false };
         }
-        break;
 
       case 'delete_task':
         try {
@@ -34,7 +32,6 @@ export class AppService {
         } catch (err) {
           return { ok: false };
         }
-        break;
 
       case 'update_task':
         try {
@@ -50,7 +47,6 @@ export class AppService {
         } catch (err) {
           return { ok: false };
         }
-        break;
 
       case 'completed_task':
         try {
@@ -66,7 +62,6 @@ export class AppService {
         } catch (err) {
           return { ok: false };
         }
-        break;
 
       default:
         return { ok: false };
