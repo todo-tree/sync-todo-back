@@ -1,4 +1,7 @@
-export interface commandProps {
-  type: string;
-  data: any;
+export interface createProps {
+  title: string;
+}
+
+export interface updateProps {
+  title?: string;
 }
